@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Ajax Example</h1>
+  <button id="loadDataBtn">Load Data</button>
+  <div id="dataContainer"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#loadDataBtn').click(function() {
+        $.ajax({
+          url: 'data.php', // 后端数据接口URL
+          method: 'GET',
+          success: function(response) {
+            // 请求成功时的回调函数
+            $('#dataContainer').text(response);
+          },
+          error: function(xhr, status, error) {
+            // 请求失败时的回调函数
+            console.log('Error:', error);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
